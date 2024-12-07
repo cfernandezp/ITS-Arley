@@ -1,14 +1,15 @@
 USE [ITS]
 GO
 
-/****** Object:  View [dbo].[v_Personas]    Script Date: 12/11/2023 23:16:04 ******/
+/****** Object:  View [dbo].[v_PersonasAll]    Script Date: 7/12/2024 13:49:48 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 -- select * from v_PersonasAll
-cREATE VIEW [dbo].[v_PersonasAll] AS
+ALTER VIEW [dbo].[v_PersonasAll] AS
 
 	select
 	emp.iidEmpresa,
@@ -44,6 +45,8 @@ cREATE VIEW [dbo].[v_PersonasAll] AS
 	per.iidPersona = pernat.iidPersona and
 	dpar01.iidDetalleParametro= per.iTipoPersona and dpar01.iidParametro=8 and
 	dpar02.iidDetalleParametro= per.itipoDoc and dpar02.iidParametro=5
+	and per.cstatus='1' and pernat.cstatus='1'
+
 	union all
 
 	select
@@ -72,6 +75,7 @@ cREATE VIEW [dbo].[v_PersonasAll] AS
 	per.iidPersona = perjur.iidPersona and
 	dpar01.iidDetalleParametro= per.iTipoPersona and dpar01.iidParametro=8 and
 	dpar02.iidDetalleParametro= per.itipoDoc and dpar02.iidParametro=5
+	and per.cstatus='1' and perjur.cstatus='1'
 
 
 GO
